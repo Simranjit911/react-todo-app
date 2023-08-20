@@ -31,24 +31,26 @@ const App = () => {
   const [isEditing, setIsEditing] = useState(false);
   // object state to set so we know which todo item we are editing
   const [curTodo, setCurTodo] = useState({});
+  const [editedTodo,seteditedTodo]=useState("")
 
   // function to get the value of the edit input and set the new state
   function handleEditInput(e) {
     // set the new state value to what's currently in the edit input box
-    let val=e.target.value
-    if(val==""){
-      return toast.error("Enter some data",{duration:1000})
+    seteditedTodo(e.target.value)
+          
+        setCurTodo({ ...curTodo, text: e.target.value });
       
-    }else{
-      setCurTodo({ ...curTodo, text: e.target.value });
-
-    }
     
     
   }
   function handleEditForm(e) {
     e.preventDefault();
-    handleUpdateTodo(curTodo.id, curTodo);
+    if(editedTodo!=""){
+      handleUpdateTodo(curTodo.id, curTodo);
+      
+    }else{
+      return toast.error("Enter some data",{duration:1000})
+    }
   }
   function handleUpdateTodo(id, updateTodo) {
     // here we are mapping over the todos array - the idea is check if the todo.id matches the id we pass into the function
