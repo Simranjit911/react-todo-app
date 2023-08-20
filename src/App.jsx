@@ -37,7 +37,7 @@ const App = () => {
     // set the new state value to what's currently in the edit input box
     let val=e.target.value
     if(val==""){
-      return toast.error("Enter some data",{duration:400})
+      return toast.error("Enter some data",{duration:1000})
       
     }else{
       setCurTodo({ ...curTodo, text: e.target.value });
@@ -61,7 +61,7 @@ const App = () => {
     setTodos(updatedItem);
     toast.success("Data updated Succesfully",{
       icon:"💥",
-      duration:500
+      duration:1000
 
      
     })
@@ -89,7 +89,7 @@ const App = () => {
     setTodos([...todos, data]);
     toast.success("Data Added!",{
       icon:"😎",
-      duration:400
+      duration:1000
 
     })
     setTodo("");
@@ -102,7 +102,7 @@ const App = () => {
     });
     setTodos(deleted);
     toast.success("Deleted Succesfully",{
-      duration:500
+      duration:1000
     })
   }
   return (
